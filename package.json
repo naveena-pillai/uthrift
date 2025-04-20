@@ -1,0 +1,20 @@
+{
+  "name": "uthrift",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naveena-pillai/uthrift.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naveena-pillai/uthrift/issues"
+  },
+  "homepage": "https://github.com/naveena-pillai/uthrift#readme"
+}
