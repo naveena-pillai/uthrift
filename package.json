@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/naveena-pillai/uthrift/issues"
   },
-  "homepage": "https://github.com/naveena-pillai/uthrift#readme"
+  "homepage": "https://github.com/naveena-pillai/uthrift#readme",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.4",
+    "tailwindcss": "^4.1.4"
+  }
 }
