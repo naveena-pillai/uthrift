@@ -1,7 +1,7 @@
 {
   "name": "uthrift",
   "version": "1.0.0",
-  "description": "",
+  "description": "-> Dormpop has a similar purpose to Depop, but is catered towards college students seeking access to more affordable resources. We look to not only bring the campus community together while providing an easy site to shop for your new college lifestyle.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +19,8 @@
   "homepage": "https://github.com/naveena-pillai/uthrift#readme",
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
+    "react-router": "^7.5.1",
+    "react-router-dom": "^7.5.1",
     "tailwindcss": "^4.1.4"
   }
 }
