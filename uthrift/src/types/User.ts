@@ -1,8 +1,8 @@
 import { UserOrder } from "./Order";
 
 export interface User {
-  uid: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   role: "buyer" | "seller";
   favorites?: string[];
