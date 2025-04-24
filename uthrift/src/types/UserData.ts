@@ -1,6 +1,6 @@
 import { UserOrder } from "./Order";
 
-export interface User {
+export interface UserData {
   firstName: string;
   lastName: string;
   email: string;
