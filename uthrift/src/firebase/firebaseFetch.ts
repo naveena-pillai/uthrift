@@ -2,6 +2,8 @@ import { db } from "./firebase";
 import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
 import { UserData } from "../types/UserData";
 import { Item } from "../types/Item";
+import { deleteDoc } from "firebase/firestore";
+
 
 export const fetchUserData = async (uid: string): Promise<UserData | null> => {
   try {
@@ -41,5 +43,28 @@ export const removeItemFromCart = async (uid: string, itemId: string) => {
       });
     } catch (error) {
       console.error("Error removing item from cart:", error);
+    }
+  };
+
+  export const deleteItemFromItems = async (itemId: string): Promise<void> => {
+    try {
+      const itemRef = doc(db, "items", itemId);
+      await deleteDoc(itemRef);
+      console.log(`Item ${itemId} deleted from items collection.`);
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+
+  export const clearCart = async (id: string): Promise<void> => {
+    try {
+      const userRef = doc(db, "users", id);
+      await updateDoc(userRef, {
+        orders: [],
+      });
+      console.log("Cart cleared.");
+    } catch (error) {
+      console.error("Error clearing cart:", error);
     }
   };

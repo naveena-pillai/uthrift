@@ -13,7 +13,6 @@ import CheckoutPage from "./pages/CheckoutPage";
 function App() {
   return (
     <Router>
-
     <AuthProvider>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -24,8 +23,6 @@ function App() {
           <Route path="/complete" element={<OrderCompletePage />} />
           <Route path="/checkout" element={<CheckoutPage/>}/>
           <Route path="/profile" element={<ProfilePage />} />
-
-
         </Routes>
     </AuthProvider>
     </Router>
