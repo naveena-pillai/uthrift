@@ -53,6 +53,12 @@ const CartPage = () => {
     <div className="flex flex-col lg:flex-row gap-8 min-h-screen p-6 bg-[#FAF8F2]">
       
       <div className="flex-1">
+      <button
+            type="submit"
+            className="w-20 bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 rounded-full transition duration-200 flex items-center justify-center gap-2"
+           onClick={() => navigate("/home")}>
+           Back
+          </button>
         <h1 className="text-2xl font-bold text-center mb-4">
           {userData?.firstName}'s Cart
         </h1>

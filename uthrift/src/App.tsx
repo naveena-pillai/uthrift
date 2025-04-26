@@ -12,7 +12,6 @@ import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   return (
-
     <AuthProvider>
       <Router>
         <Routes>
@@ -25,8 +24,6 @@ function App() {
           <Route path="/complete" element={<OrderCompletePage />} />
           <Route path="/checkout" element={<CheckoutPage/>}/>
           <Route path="/profile" element={<ProfilePage />} />
-
-
         </Routes>
         </Router>
     </AuthProvider>
