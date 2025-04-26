@@ -1,12 +1,13 @@
 import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'
-
+import { useNavigate } from 'react-router';
 
 const OrderCompletePage = () => {
     const { width, height } = useWindowSize()
+    const navigate = useNavigate()
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen bg-[#FAF8F2]">
              <Confetti
                 width={width}
                 height={height} />
@@ -16,7 +17,7 @@ const OrderCompletePage = () => {
                     Thank you for your order! It’s being processed and will be completed within 3–6 hours.
                     You’ll receive an email confirmation once it’s done.
                 </p>
-                <button className="bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                <button className="bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 px-6 rounded-lg transition duration-200" onClick={() => navigate("/home")}>
                     Continue Shopping
                 </button>
             </div>
