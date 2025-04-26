@@ -12,11 +12,11 @@ import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   return (
-    <Router>
 
     <AuthProvider>
+      <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/home" element={<HomePage />} />
@@ -27,8 +27,8 @@ function App() {
 
 
         </Routes>
+        </Router>
     </AuthProvider>
-    </Router>
 
   );
 }
