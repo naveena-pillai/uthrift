@@ -12,10 +12,11 @@ import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   return (
-    <Router>
     <AuthProvider>
+      <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/home" element={<HomePage />} />
@@ -24,8 +25,8 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage/>}/>
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
+        </Router>
     </AuthProvider>
-    </Router>
 
   );
 }
