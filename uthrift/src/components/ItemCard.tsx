@@ -1,4 +1,4 @@
-import { useItemContext } from "../context/ItemContext";
+import { useItemContext } from "../Context/ItemContext";
 import { addItemToCart } from "../firebase/firebaseFunctions";
 
 export type ItemCardProps = {
@@ -9,7 +9,6 @@ export type ItemCardProps = {
     material: string;
     condition: string;
     price: number;
-    onClick: () => void;
 };
 
 const ItemCard: React.FC = () => {
@@ -18,8 +17,7 @@ const ItemCard: React.FC = () => {
     if (!selectedItem) return null;
 
     const addToCart = () => {
-        setSelectedItem({ name, thumbnail, price, seller, description, material, condition });
-        onClick();
+        addItemToCart(selectedItem);
     };
 
     const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -29,31 +27,46 @@ const ItemCard: React.FC = () => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black/50" onClick={handleBackgroundClick}>
-            <div className="p-[40px] w-[536px] h-[962px] bg-[#E8E2D5] gap-8 flex flex-col overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div
+            className="fixed inset-0 z-50 flex justify-center items-center bg-black/50"
+            onClick={handleBackgroundClick}
+        >
+            <div
+                className="p-[40px] w-[536px] h-[962px] bg-[#E8E2D5] gap-8 flex flex-col overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <div className="flex flex-col items-center">
-                    <h1 className="font-[Roboto] font-[26px]">{selectedItem.name}</h1>
-                    <img src={selectedItem.thumbnail} className="w-[350px] h-[350px] object-cover" />
-                    <p className="font-[Montserrat] font-[20px]">{"Seller " + selectedItem.seller}</p>
+                    <h1 className="font-[Roboto] text-[26px]">{selectedItem.name}</h1>
+                    <img
+                        src={selectedItem.thumbnail}
+                        className="w-[350px] h-[350px] object-cover"
+                        alt={selectedItem.name}
+                    />
+                    <p className="font-[Montserrat] text-[20px]">{"Seller " + selectedItem.seller}</p>
                 </div>
+
                 <div className="flex gap-4">
-                    <h2 className="font-[Inter] font-[20px]">Description:</h2>
-                    <p className="font-[Montserrat] font-[20px]">{selectedItem.description}</p>
+                    <h2 className="font-[Inter] text-[20px]">Description:</h2>
+                    <p className="font-[Montserrat] text-[20px]">{selectedItem.description}</p>
                 </div>
+
                 <div className="flex gap-4">
-                    <h2 className="font-[Inter] font-[20px]">Material:</h2>
-                    <p className="font-[Montserrat] font-[20px]">{selectedItem.material}</p>
+                    <h2 className="font-[Inter] text-[20px]">Material:</h2>
+                    <p className="font-[Montserrat] text-[20px]">{selectedItem.material}</p>
                 </div>
+
                 <div className="flex gap-4">
-                    <h2 className="font-[Inter] font-[20px]">Condition:</h2>
-                    <p className="font-[Montserrat] font-[20px]">{selectedItem.condition}</p>
+                    <h2 className="font-[Inter] text-[20px]">Condition:</h2>
+                    <p className="font-[Montserrat] text-[20px]">{selectedItem.condition}</p>
                 </div>
-                <div className="bottom flex justify-between">
-                    <h1 className="font-[Roboto] font-[26px]">Price: ${selectedItem.price}</h1>
-                    <button 
-                      className="font-[Inter] font-[20px] p-[10px] text-center rounded-lg" 
-                      onClick={addToCart}>
-                      Add to Cart!
+
+                <div className="flex justify-between items-center mt-4">
+                    <h1 className="font-[Roboto] text-[26px]">Price: ${selectedItem.price}</h1>
+                    <button
+                        className="font-[Inter] text-[20px] p-[10px] text-center rounded-lg bg-blue-500 text-white hover:bg-blue-600"
+                        onClick={addToCart}
+                    >
+                        Add to Cart!
                     </button>
                 </div>
             </div>

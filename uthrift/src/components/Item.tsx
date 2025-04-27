@@ -1,4 +1,4 @@
-import { useItemContext } from "../context/ItemContext";
+import { useItemContext } from "../Context/ItemContext";
 import { addItemToCart } from "../firebase/firebaseFunctions";
 
 interface ItemProps {
@@ -9,18 +9,17 @@ interface ItemProps {
     description: string;
     material: string;
     condition: string;
-    onClick: () => void;
 }
 
-const Item: React.FC<ItemProps> = ({ name, thumbnail, price, seller, description, material, condition, onClick }) => {
+const Item: React.FC<ItemProps> = ({ name, thumbnail, price, seller, description, material, condition }) => {
     const { setSelectedItem } = useItemContext();
 
     const handleItemClick = () => {
         setSelectedItem({ name, thumbnail, price, seller, description, material, condition });
-        onClick();
     };
 
-    const addToCart = () => {
+    const addToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
         const item = { name, thumbnail, price, seller, description, material, condition };
         addItemToCart(item);
     };
@@ -33,10 +32,7 @@ const Item: React.FC<ItemProps> = ({ name, thumbnail, price, seller, description
                 <h1 className="font-[Inter] font-[16px]">${price}</h1>
                 <button 
                   className="font-[Inter] font-[15px] p-[5px] text-center rounded-lg" 
-                  onClick={(e) => {
-                      e.stopPropagation();
-                      addToCart();
-                  }}>
+                  onClick={addToCart}>
                   Add to Cart!
                 </button>
             </div>
