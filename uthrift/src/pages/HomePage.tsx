@@ -21,7 +21,7 @@ const items: ItemCardProps[] = [
 const HomePage = () => {
   const { selectedItem, setSelectedItem } = useItemContext();
   return (
-    <div className="bg-[#F8F4EC]">
+    <div className="bg-[#F8F4EC] h-screen">
       <div className="grid grid-cols-3 gap-6">
         {items.map((item: ItemCardProps, index) => (
           <Item
