@@ -1,5 +1,3 @@
-export type UserRole = "buyer" | "seller";
-
 export interface UserData {
   firstName: string;
   lastName: string;
