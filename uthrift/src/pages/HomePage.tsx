@@ -22,7 +22,7 @@ const items: ItemCardProps[] = [
 const HomePage = () => {
   const { setSelectedItem } = useItemContext();
   return (
-    <>
+    <div className="bg-[#F8F4EC]">
       <div className="grid grid-cols-3 gap-6">
         {items.map((item: ItemCardProps, index) => (
           <Item
@@ -40,7 +40,7 @@ const HomePage = () => {
       </div>
 
       <ItemCard /> 
-    </>
+    </div>
   );
 }
 
