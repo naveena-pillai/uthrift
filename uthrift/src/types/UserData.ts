@@ -7,4 +7,5 @@ export interface UserData {
   role: "buyer" | "seller";
   favorites?: string[];
   orders?: UserOrder[];
+
 }
