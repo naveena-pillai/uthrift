@@ -1,6 +1,6 @@
 // Shows most popular items
 // When item is clicked, will have to display an overlay of its info with a checkout button, create component maybe
-import { useItemContext } from "../Context/ItemContext";
+import { useItemContext } from "../context/ItemContext";
 import { useState } from "react";
 import Item from "../components/Item";
 import ItemCard from "../components/ItemCard";
@@ -16,6 +16,7 @@ const items: ItemCardProps[] = [
         description: "This is a description for Item 1.",
         material: "Material 1",
         condition: "New",
+        onClick: () => void
     }
 ];
 

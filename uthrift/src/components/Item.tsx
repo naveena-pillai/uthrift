@@ -1,4 +1,5 @@
-import { useItemContext } from "../Context/ItemContext";
+import { useItemContext } from "../context/ItemContext";
+import { addItemToCart } from "../firebase/firebaseFunctions";
 
 interface ItemProps {
     name: string;
@@ -20,7 +21,8 @@ const Item: React.FC<ItemProps> = ({ name, thumbnail, price, seller, description
     };
 
     const addToCart = () => {
-        // Later: Add to cart logic
+        const item = { name, thumbnail, price, seller, description, material, condition };
+        addItemToCart(item);
     };
 
     return (

@@ -1,4 +1,5 @@
-import { useItemContext } from "../Context/ItemContext";
+import { useItemContext } from "../context/ItemContext";
+import { addItemToCart } from "../firebase/firebaseFunctions";
 
 export type ItemCardProps = {
     name: string;
@@ -8,6 +9,7 @@ export type ItemCardProps = {
     material: string;
     condition: string;
     price: number;
+    onClick: () => void;
 };
 
 const ItemCard: React.FC = () => {
@@ -16,7 +18,8 @@ const ItemCard: React.FC = () => {
     if (!selectedItem) return null;
 
     const addToCart = () => {
-        // Later: Add to Firebase
+        setSelectedItem({ name, thumbnail, price, seller, description, material, condition });
+        onClick();
     };
 
     const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
