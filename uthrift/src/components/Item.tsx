@@ -8,13 +8,15 @@ interface ItemProps {
     description: string;
     material: string;
     condition: string;
+    onClick: () => void;
 }
 
-const Item: React.FC<ItemProps> = ({ name, thumbnail, price, seller, description, material, condition }) => {
+const Item: React.FC<ItemProps> = ({ name, thumbnail, price, seller, description, material, condition, onClick }) => {
     const { setSelectedItem } = useItemContext();
 
     const handleItemClick = () => {
         setSelectedItem({ name, thumbnail, price, seller, description, material, condition });
+        onClick();
     };
 
     const addToCart = () => {
