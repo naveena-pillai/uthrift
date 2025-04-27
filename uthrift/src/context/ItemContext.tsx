@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface ItemData {
   name: string;
@@ -30,7 +30,7 @@ export const ItemProvider = ({ children }: { children: ReactNode }) => {
 export const useItemContext = () => {
   const context = useContext(ItemContext);
   if (!context) {
-    throw new Error("useItemContext must be used inside an ItemProvider");
+    throw new Error('useItemContext must be used inside an ItemProvider');
   }
   return context;
 };
