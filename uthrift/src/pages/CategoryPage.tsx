@@ -22,8 +22,7 @@ interface ItemCardProps {
 }
 
 export default function CategoryPage() {
-  const { category } = useParams(); // Get category from URL
-  const categoryName = category as string;
+  const { categoryName } = useParams(); // Get category from URL
   const { selectedItem, setSelectedItem } = useItemContext();
   const [items, setItems] = useState<ItemCardProps[]>([]);
 
