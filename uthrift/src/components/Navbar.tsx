@@ -52,12 +52,15 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center space-x-6 justify-end relative">
-        <img
-          src={shoppingCart}
-          alt="Shopping Cart"
-          className="w-8 h-8 cursor-pointer"
-          onClick={() => navigate("/cart")}
-        />
+        {userData?.role !== "seller" && (
+          <img
+            src={shoppingCart}
+            alt="Shopping Cart"
+            className="w-8 h-8 cursor-pointer"
+            onClick={() => navigate("/cart")}
+          />
+        )}
+
         <div className="relative">
           <img
             src={profileIcon}

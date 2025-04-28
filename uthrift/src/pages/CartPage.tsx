@@ -69,6 +69,9 @@ const CartPage = () => {
           <h1 className="text-2xl font-bold text-center mb-4">
             {userData?.firstName}'s Cart
           </h1>
+          <h2 className="text-xl font-italics text-center mb-4">
+            Logged in as {userData?.email}
+          </h2>
           <p className="text-[#1D2D1F] font-semibold text-center mb-2">
             {cartItems.length} item{cartItems.length !== 1 ? "s" : ""} in Cart
           </p>
