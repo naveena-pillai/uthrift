@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { addItemToCart, fetchUserData } from "../firebase/firebaseFetch";
 
 const ItemCard: React.FC = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, userData } = useAuth();
   const { selectedItem, setSelectedItem } = useItemContext();
   const [sellerName, setSellerName] = useState<string>("");
 
@@ -82,7 +82,7 @@ const ItemCard: React.FC = () => {
 
         <div className="flex justify-between items-center mt-4">
           <h1 className="font-roboto text-2xl">Price: ${selectedItem.price}</h1>
-          {currentUser?.role == "buyer" && (
+          {userData?.role !== "seller" && (
             <button
               onClick={handleAddToCart}
               className="font-inter text-lg p-2 rounded-lg text-white bg-[#7E9181] hover:bg-[#6b7e6e]"

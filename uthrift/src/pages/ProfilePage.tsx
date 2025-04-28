@@ -140,8 +140,11 @@ const ProfilePage = () => {
         </div>
 
         <div className="flex-1 p-8 relative">
-          <h2 className="text-3xl font-bold mb-8 font-[Montserrat]">
-            Welcome, {currentUser?.email?.split("@")[0] || "XXXXX"}!
+          <h2 className="text-3xl font-bold mb-5 font-[Montserrat]">
+            Welcome, {currentUser?.displayName || "XXXXX"}!
+          </h2>
+          <h2 className="text-xl font-italics mb-8 font-[Montserrat]">
+            Logged in as {currentUser?.email}
           </h2>
 
           {showAddressForm ? (
