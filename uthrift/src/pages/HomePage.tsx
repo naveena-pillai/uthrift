@@ -1,10 +1,5 @@
-// Shows most popular items
-
+// When item is clicked, will have to display an overlay of its info with a checkout button
 import Navbar from "../components/Navbar";
-
-// When item is clicked, will have to display an overlay of its info with a checkout button, create component maybe
-// Shows most popular items
-// When item is clicked, will have to display an overlay of its info with a checkout button, create component maybe
 import { useState, useEffect } from "react";
 import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -63,8 +58,8 @@ const HomePage = () => {
     <>
       <Navbar />
       <CategoryBar />
-      <div className="bg-[#F8F4EC] h-screen flex justify-center">
-        <div className="grid grid-cols-3 gap-6">
+      <div className="bg-[#F8F4EC] min-h-screen flex justify-center py-10">
+        <div className="grid grid-cols-4 gap-5">
           {items.map((item, index) => (
             <div key={index} onClick={() => handleItemClick(item)}>
               <Item
