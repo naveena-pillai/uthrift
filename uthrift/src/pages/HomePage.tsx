@@ -59,7 +59,7 @@ const HomePage = () => {
       <Navbar />
       <CategoryBar />
       <div className="bg-[#F8F4EC] min-h-screen flex justify-center py-10">
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-4 gap-5">
           {items.map((item, index) => (
             <div key={index} onClick={() => handleItemClick(item)}>
               <Item
