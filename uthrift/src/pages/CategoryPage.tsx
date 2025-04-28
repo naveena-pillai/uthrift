@@ -8,6 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useItemContext } from "../context/ItemContext";
 import Item from "../components/Item";
 import ItemCard from "../components/ItemCard";
+import CategoryBar from "../components/CategoryBar";
 
 interface ItemCardProps {
   id: string;
@@ -22,8 +23,7 @@ interface ItemCardProps {
 }
 
 export default function CategoryPage() {
-  const { category } = useParams(); // Get category from URL
-  const categoryName = category as string;
+  const { categoryName } = useParams(); // Get category from URL
   const { selectedItem, setSelectedItem } = useItemContext();
   const [items, setItems] = useState<ItemCardProps[]>([]);
 
@@ -69,6 +69,7 @@ export default function CategoryPage() {
   return (
     <>
       <Navbar />
+      <CategoryBar />
       <div className="bg-[#F8F4EC] min-h-screen flex justify-center">
         <div className="grid grid-cols-3 gap-6">
           {items.map((item, index) => (

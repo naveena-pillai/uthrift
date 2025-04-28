@@ -24,7 +24,7 @@ const Item: React.FC<ItemProps> = ({
   condition,
 }) => {
   const { setSelectedItem } = useItemContext();
-  const { currentUser } = useAuth();
+  const { currentUser, userData } = useAuth(); // Grab userData here
 
   const handleItemClick = () => {
     setSelectedItem({
@@ -66,14 +66,15 @@ const Item: React.FC<ItemProps> = ({
       <h1 className="font-inter text-lg mt-2">{name}</h1>
       <div className="flex justify-between items-center mt-1">
         <h2 className="font-inter text-base">${price}</h2>
-        {currentUser?.role == "buyer" && (
-          <button
-            onClick={handleAddToCart}
-            className="font-inter text-lg p-2 rounded-lg text-white bg-[#7E9181] hover:bg-[#6b7e6e]"
-          >
-            Add to Cart!
-          </button>
-        )}
+        {userData &&
+          userData.role !== "seller" && ( // Guard against null
+            <button
+              onClick={handleAddToCart}
+              className="font-inter text-sm px-3 py-1 rounded-lg bg-[#7E9181] text-white hover:bg-[#6b7e6e]"
+            >
+              Add to Cart!
+            </button>
+          )}
       </div>
     </div>
   );
