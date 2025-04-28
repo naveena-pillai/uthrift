@@ -11,25 +11,30 @@ import CartPage from "./pages/CartPage";
 import OrderCompletePage from "./pages/OrderCompletePage";
 import CheckoutPage from "./pages/CheckoutPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import { ItemProvider } from "./context/ItemContext";
+import CategoryPage from "./pages/CategoryPage";
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/forgotPassword" element={<ForgotPassword />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/complete" element={<OrderCompletePage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/choose-role" element={<GoogleChooseRole />} />
-          <Route path="/*" element={<NotFoundPage />} />
-        </Routes>
-      </Router>
+      <ItemProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/forgotPassword" element={<ForgotPassword />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/complete" element={<OrderCompletePage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/choose-role" element={<GoogleChooseRole />} />
+            <Route path="/category/:categoryName" element={<CategoryPage />} />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Routes>
+        </Router>
+      </ItemProvider>
     </AuthProvider>
   );
 }

@@ -1,9 +1,14 @@
 import { db } from "./firebase";
-import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,
+} from "firebase/firestore";
 import { UserData } from "../types/UserData";
 import { Item } from "../types/Item";
 import { deleteDoc } from "firebase/firestore";
-
 
 export const fetchUserData = async (uid: string): Promise<UserData | null> => {
   try {
@@ -20,11 +25,14 @@ export const fetchUserData = async (uid: string): Promise<UserData | null> => {
   }
 };
 
-export const fetchItemData = async (itemId: string): Promise<Item | null> => {
+export const fetchItemData = async (
+  itemId: string
+): Promise<(Item & { id: string }) | null> => {
   try {
     const itemDoc = await getDoc(doc(db, "items", itemId));
     if (itemDoc.exists()) {
-      return itemDoc.data() as Item;
+      const data = itemDoc.data() as Item;
+      return { ...data, id: itemDoc.id }; // Attach Firestore doc ID
     } else {
       console.warn("No item document found for Item ID:", itemId);
       return null;
@@ -36,35 +44,49 @@ export const fetchItemData = async (itemId: string): Promise<Item | null> => {
 };
 
 export const removeItemFromCart = async (uid: string, itemId: string) => {
-    try {
-      const userRef = doc(db, "users", uid);
-      await updateDoc(userRef, {
-        orders: arrayRemove(itemId),
-      });
-    } catch (error) {
-      console.error("Error removing item from cart:", error);
-    }
-  };
+  try {
+    const userRef = doc(db, "users", uid);
+    await updateDoc(userRef, {
+      orders: arrayRemove(itemId),
+    });
+  } catch (error) {
+    console.error("Error removing item from cart:", error);
+  }
+};
 
-  export const deleteItemFromItems = async (itemId: string): Promise<void> => {
-    try {
-      const itemRef = doc(db, "items", itemId);
-      await deleteDoc(itemRef);
-      console.log(`Item ${itemId} deleted from items collection.`);
-    } catch (error) {
-      console.error("Error deleting item:", error);
-    }
-  };
+export const addItemToCart = async (
+  uid: string,
+  itemId: string
+): Promise<void> => {
+  try {
+    const userRef = doc(db, "users", uid);
+    await updateDoc(userRef, {
+      orders: arrayUnion(itemId),
+    });
+    console.log(`Item ${itemId} added to cart for user ${uid}.`);
+  } catch (error) {
+    console.error("Error adding item to cart:", error);
+  }
+};
 
+export const deleteItemFromItems = async (itemId: string): Promise<void> => {
+  try {
+    const itemRef = doc(db, "items", itemId);
+    await deleteDoc(itemRef);
+    console.log(`Item ${itemId} deleted from items collection.`);
+  } catch (error) {
+    console.error("Error deleting item:", error);
+  }
+};
 
-  export const clearCart = async (id: string): Promise<void> => {
-    try {
-      const userRef = doc(db, "users", id);
-      await updateDoc(userRef, {
-        orders: [],
-      });
-      console.log("Cart cleared.");
-    } catch (error) {
-      console.error("Error clearing cart:", error);
-    }
-  };
+export const clearCart = async (id: string): Promise<void> => {
+  try {
+    const userRef = doc(db, "users", id);
+    await updateDoc(userRef, {
+      orders: [],
+    });
+    console.log("Cart cleared.");
+  } catch (error) {
+    console.error("Error clearing cart:", error);
+  }
+};

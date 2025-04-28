@@ -15,25 +15,13 @@ import {
 import { useAuth } from "../context/AuthContext";
 import ProfileItemCard from "../components/ProfileItemCard";
 import UploadItem from "../components/UploadItem";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const ProfilePage = () => {
-  const navigate = useNavigate();
-  const { currentUser, logout } = useAuth();
-  const [showLogout, setShowLogout] = useState(false);
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/login");
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
-  };
+  const { currentUser } = useAuth();
   const [showUploadForm, setShowUploadForm] = useState(false);
   const [items, setItems] = useState<any[]>([]);
-  // currentUser is already destructured from useAuth() at the top level
 
   const loadUserItems = async () => {
     if (!currentUser) return;
@@ -56,14 +44,14 @@ const ProfilePage = () => {
   }, [currentUser]);
 
   const handleUploadComplete = async () => {
-    await loadUserItems(); // Refresh the items list
-    setShowUploadForm(false); // Close the upload form
+    await loadUserItems();
+    setShowUploadForm(false);
   };
 
   const handleDeleteItem = async (itemId: string) => {
     try {
       await deleteDoc(doc(db, "items", itemId));
-      await loadUserItems(); // Refresh the list after deletion
+      await loadUserItems();
     } catch (error) {
       console.error("Error deleting item:", error);
     }
@@ -72,11 +60,12 @@ const ProfilePage = () => {
   const handleUpdateItem = async (itemId: string, updatedData: any) => {
     try {
       await updateDoc(doc(db, "items", itemId), updatedData);
-      await loadUserItems(); // Refresh the list after update
+      await loadUserItems();
     } catch (error) {
       console.error("Error updating item:", error);
     }
   };
+
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [addressData, setAddressData] = useState({
     firstName: "",
@@ -126,53 +115,22 @@ const ProfilePage = () => {
     loadUserAddress();
   }, [currentUser]);
 
-  // Update the address form JSX:
   return (
-    <div className="min-h-screen bg-[#F8F4EC]">
-      {/* <div className="bg-[#731B15] p-8 flex justify-between items-center w-full">
-        <div className="flex items-center">
-          <FaShoppingBag className="text-white text-3xl" />
-        </div>
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <img src={DormPop} alt="DormPop" className="h-16" />
-        </div>
-        <div
-          className="flex items-center relative"
-          onMouseEnter={() => setShowLogout(true)}
-          onMouseLeave={() => setShowLogout(false)}
-        >
-          <FaUser className="text-white text-2xl cursor-pointer" />
-          <div
-            className={`absolute top-0 right-0 transition-opacity duration-200 ${
-              showLogout ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          >
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 bg-red-500 text-white rounded shadow-lg hover:bg-red-600 transition-colors whitespace-nowrap mt-8"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      </div> */}
+    <div className="min-h-screen bg-[#F8F4EC] font-montserrat">
       <Navbar />
-
       <div className="flex h-full">
-        {/* Vertical Navigation - Now starts below header */}
-        {/* Vertical Navigation */}
         <div className="flex flex-col w-64">
           <div className="bg-[#7E9181]">
             <div className="flex flex-col space-y-4 pt-2">
               <button
                 onClick={() => setShowAddressForm(false)}
-                className="hover:text-white px-10 py-3 text-left border-b-2 border-black w-full"
+                className="hover:text-white font-[Montserrat] px-10 py-3 text-left border-b-2 border-black w-full"
               >
                 Current Listings
               </button>
               <button
                 onClick={() => setShowAddressForm(true)}
-                className="hover:text-white px-10 py-3 text-left border-b-2 border-black w-full"
+                className="hover:text-white font-[Montserrat] px-10 py-3 text-left border-b-2 border-black w-full"
               >
                 Add Address
               </button>
@@ -181,9 +139,8 @@ const ProfilePage = () => {
           <div className="bg-[#E8E2D5] flex-1 w-full min-h-[calc(100vh-200px)]"></div>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 p-8 relative">
-          <h2 className="text-3xl font-bold mb-8">
+          <h2 className="text-3xl font-bold mb-8 font-[Montserrat]">
             Welcome, {currentUser?.email?.split("@")[0] || "XXXXX"}!
           </h2>
 

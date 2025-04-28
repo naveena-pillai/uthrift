@@ -8,6 +8,21 @@ interface UploadItemProps {
   onUploadComplete: () => void;
 }
 
+// Define subcategories for the dropdown
+const categories = [
+  "Shirts",
+  "Pants",
+  "Jackets",
+  "Shoes",
+  "Backpacks",
+  "Notebooks",
+  "Pens",
+  "Calculators",
+  "Laptops",
+  "Phones",
+  "Chargers",
+];
+
 const UploadItem: React.FC<UploadItemProps> = ({
   onClose,
   onUploadComplete,
@@ -23,8 +38,11 @@ const UploadItem: React.FC<UploadItemProps> = ({
     imageUrl: "",
   });
 
+  // Handles form field changes
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormData({
       ...formData,
@@ -32,6 +50,7 @@ const UploadItem: React.FC<UploadItemProps> = ({
     });
   };
 
+  // Handles form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUser) {
@@ -94,15 +113,23 @@ const UploadItem: React.FC<UploadItemProps> = ({
             className="w-full p-2 rounded border"
             required
           />
-          <input
-            type="text"
+
+          {/* Category dropdown */}
+          <select
             name="category"
-            placeholder="Category"
             value={formData.category}
             onChange={handleInputChange}
             className="w-full p-2 rounded border"
             required
-          />
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+
           <textarea
             name="description"
             placeholder="Description"
@@ -137,6 +164,7 @@ const UploadItem: React.FC<UploadItemProps> = ({
             onChange={handleInputChange}
             className="w-full p-2 rounded border"
             required
+            min="0"
           />
           <input
             type="text"
