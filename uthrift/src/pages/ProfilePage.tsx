@@ -19,7 +19,7 @@ import UploadItem from "../components/UploadItem";
 import Navbar from "../components/Navbar";
 
 const ProfilePage = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, userData } = useAuth();
   const [showUploadForm, setShowUploadForm] = useState(false);
   const [items, setItems] = useState<any[]>([]);
 
@@ -141,7 +141,7 @@ const ProfilePage = () => {
 
         <div className="flex-1 p-8 relative">
           <h2 className="text-3xl font-bold mb-5 font-[Montserrat]">
-            Welcome, {currentUser?.displayName || "XXXXX"}!
+            Welcome, {userData?.firstName} {userData?.lastName}!
           </h2>
           <h2 className="text-xl font-italics mb-8 font-[Montserrat]">
             Logged in as {currentUser?.email}
