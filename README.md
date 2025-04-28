@@ -1,6 +1,42 @@
-# bootcamp-final-project
--> Dormpop has a similar purpose to Depop, but is catered towards college students seeking access to more affordable resources. We look to not only bring the campus community together while providing an easy site to shop for your new college lifestyle.
+# DORMPOP 🛍️ 📚
+*Your campus marketplace for affordable college essentials.*
 
--> With expensive campus stores and some packages that cannot be delivered, Dormpop seeks to have quick and easy access to resources with same day pickup, custom filtering to YOUR taste, and reasonable options. Dormpop is here to make your campus life optimal, featuring: clothing, accessories, dorm decorations and textbooks.
+Dormpop has a similar purpose to Depop, but is catered towards college students seeking access to more affordable resources. We bring your campus community together, making it easier than ever to shop or sell clothing, dorm decor, textbooks, and more while providing an easy site to shop for your new college lifestyle.
 
--> You have the choice to be a customer/buyer on the site, or a seller, you can switch between the two. As a buyer you will be able to scroll through products, look at your cart, filter for specific categories, see what products are popular, and checkout. As a seller you are able to view your profile and selling statistics, update prices (to increase or put them on sale), upload desctiptions of your clothes with photos, and add addresses.
+## Features 
+**Curated for College Students:** Affordable essentials like clothing, accessories, dorm decorations, and textbooks.
+
+**Same-Day Pickup:** Skip the expensive campus store and get what you need fast.
+
+**Custom Filtering:** Find exactly what you want based on category.
+
+**Dual Roles:** Create an account based on whether you'd like to be a buyer or a seller.
+
+   **Buyers:** Browse products, add items to your cart, filter by category, view popular items, and checkout.
+
+   **Sellers:** Manage your profile, update prices (increase or put on sale), upload item photos and descriptions, and manage pickup addresses.
+
+## Setup
+Install [Node.js]([https://pages.github.com/](https://nodejs.org/)).
+1. Clone the repository & navigate into project directory:
+
+        git clone https://github.com/naveena-pillai/uthrift.git
+        cd uthrift
+
+2. Initialize the project:
+
+        npm init -y
+   
+4. Install dependencies:
+
+        npm install
+   
+5. Start the development server
+   
+        npm run dev
+
+## Tech Stack
+
+Frontend: React + Tailwind CSS
+
+Backend/Database: Firebase (Firestore, Authentication)
