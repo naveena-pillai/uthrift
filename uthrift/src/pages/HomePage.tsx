@@ -21,9 +21,9 @@ const HomePage = () => {
           const data = doc.data();
           itemsList.push({
             name: data.name,
-            thumbnail: data.thumbnail,
+            thumbnail: data.imageUrl,
             price: data.price,
-            seller: data.seller,
+            seller: data.sellerId,
             description: data.description,
             material: data.material,
             condition: data.condition,
