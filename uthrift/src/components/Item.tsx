@@ -23,7 +23,7 @@ const Item: React.FC<ItemProps> = ({
   material,
   condition,
 }) => {
-  const { setSelectedItem } = useItemContext();
+  const { selectedItem, setSelectedItem } = useItemContext();
   const { currentUser, userData } = useAuth();
 
   const handleItemClick = () => {
@@ -39,23 +39,20 @@ const Item: React.FC<ItemProps> = ({
     });
   };
 
-  const handleAddToCart = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-
+  const handleAddToCart = async () => {
     if (!currentUser) {
       alert("Please log in to add items to your cart.");
       return;
     }
 
     try {
-      await addItemToCart(currentUser.uid, id);
+      await addItemToCart(currentUser.uid, selectedItem.id);
       alert("Item added to cart!");
     } catch (error) {
       console.error("Error adding item to cart:", error);
       alert("Failed to add item to cart.");
     }
   };
-
   return (
     <div
       className="w-[320px] h-[450px] p-4 bg-[#E8E2D5] rounded-2xl border border-transparent hover:border-[#7E2C1E] hover:shadow-lg transition-all flex flex-col cursor-pointer"
@@ -75,10 +72,10 @@ const Item: React.FC<ItemProps> = ({
         <h2 className="font-inter text-lg font-medium text-[#7E2C1E]">
           ${price}
         </h2>
-        {userData && userData.role !== "seller" && (
+        {userData?.role !== "seller" && (
           <button
             onClick={handleAddToCart}
-            className="font-inter text-sm px-4 py-2 rounded-lg bg-[#7E9181] text-white hover:bg-[#6b7e6e] transition-colors"
+            className="font-inter text-lg px-4 py-2 rounded-xl text-white bg-[#7E9181] hover:bg-[#6b7e6e] transition-colors shadow"
           >
             Add to Cart
           </button>
