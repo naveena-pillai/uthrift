@@ -6,11 +6,11 @@ import SignUpPage from "./pages/SignupPage";
 import ForgotPassword from "./pages/ForgotPassword";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
-import GoogleChooseRole from "./pages/GoogleChooseRole"
+import GoogleChooseRole from "./pages/GoogleChooseRole";
 import CartPage from "./pages/CartPage";
 import OrderCompletePage from "./pages/OrderCompletePage";
 import CheckoutPage from "./pages/CheckoutPage";
-
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -24,13 +24,13 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/complete" element={<OrderCompletePage />} />
-          <Route path="/checkout" element={<CheckoutPage/>}/>
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/choose-role" element={<GoogleChooseRole />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
-        </Router>
+      </Router>
     </AuthProvider>
-
   );
 }
 
