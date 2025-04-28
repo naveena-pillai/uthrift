@@ -26,13 +26,10 @@ const Navbar = () => {
   }, [currentUser]);
 
   const handleProfileClick = () => {
-    if (userData?.role === "seller") {
-      navigate("/profile");
-    } else if (userData?.role === "buyer") {
-      setShowDropdown((prev) => !prev);
-    }
+    setShowDropdown((prev) => !prev);
   };
 
+  // Logout logic
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/login");
@@ -41,7 +38,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center px-8 py-2 bg-[#7E2C1E] shadow-md">
       <div
-        className="flex items-center space-x-2 cursor-pointer"
+        className="flex items-center cursor-pointer"
         onClick={() => navigate("/home")}
       >
         <img src={logo} alt="Logo" className="h-8 w-auto" />
@@ -54,7 +51,7 @@ const Navbar = () => {
         <img src="/DormPop.png" alt="DormPop Logo" className="h-10 w-auto" />
       </div>
 
-      <div className="flex items-center space-x-6 justify-end">
+      <div className="flex items-center space-x-6 justify-end relative">
         <img
           src={shoppingCart}
           alt="Shopping Cart"
@@ -70,9 +67,22 @@ const Navbar = () => {
           />
           {showDropdown && (
             <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+              {userData?.role === "seller" && (
+                <button
+                  onClick={() => {
+                    navigate("/profile");
+                    setShowDropdown(false);
+                  }}
+                  className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left rounded-t-lg transition-colors"
+                >
+                  Profile
+                </button>
+              )}
               <button
                 onClick={handleLogout}
-                className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-[#7E2C1E] hover:text-white text-left rounded-lg transition-colors"
+                className={`w-full px-4 py-2 text-sm text-gray-700 hover:bg-[#7E2C1E] hover:text-white text-left ${
+                  userData?.role === "seller" ? "rounded-b-lg" : "rounded-lg"
+                } transition-colors`}
               >
                 Logout
               </button>

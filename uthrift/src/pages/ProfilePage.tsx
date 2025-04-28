@@ -15,8 +15,6 @@ import {
 import { useAuth } from "../context/AuthContext";
 import ProfileItemCard from "../components/ProfileItemCard";
 import UploadItem from "../components/UploadItem";
-import { FaShoppingBag, FaUser } from "react-icons/fa";
-import DormPop from "/DormPop.png";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
