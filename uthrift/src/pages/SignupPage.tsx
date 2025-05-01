@@ -27,8 +27,15 @@ export default function SignUpPage() {
       };
       await setDoc(doc(db, "users", userCred.user.uid), userData);
       navigate(userData.role === "buyer" ? "/home" : "/profile");
-    } catch {
-      alert("Signup failed: Please check all fields and try again.");
+    } catch (error: any) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("This email is already in use. Try logging in instead.");
+      } else if (error.code === "auth/invalid-email") {
+        alert("Please enter a valid email address.");
+      } else {
+        alert("Signup failed. Please check all fields and try again.");
+      }
+      console.error("Signup error:", error);
     }
   };
 

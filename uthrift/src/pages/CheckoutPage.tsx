@@ -46,7 +46,7 @@ const CheckoutPage = () => {
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
   const tax = subtotal * 0.06;
-  const deliveryFee = cartItems.length > 0 ? 15 : 0;
+  const deliveryFee = cartItems.length > 0 ? 5 : 0;
   const total = subtotal + tax + deliveryFee;
 
   return (
@@ -56,19 +56,66 @@ const CheckoutPage = () => {
         <div className="lg:col-span-2 bg-[#E6E3DC] p-6 rounded-md">
           <h2 className="text-lg font-semibold mb-4">Shipping address</h2>
           <div className="grid grid-cols-2 gap-4 mb-4">
-            <input name="firstName" placeholder="First name" onChange={handleChange} className="p-2 rounded" />
-            <input name="lastName" placeholder="Last name" onChange={handleChange} className="p-2 rounded" />
-            <input name="address" placeholder="Address" className="col-span-2 p-2 rounded" onChange={handleChange} />
-            <input name="apt" placeholder="APT, suit etc. (optional)" className="col-span-2 p-2 rounded" onChange={handleChange} />
-            <input name="city" placeholder="City" className="p-2 rounded" onChange={handleChange} />
-            <input name="postalCode" placeholder="Postal Code" className="p-2 rounded" onChange={handleChange} />
+            <input
+              name="firstName"
+              placeholder="First name"
+              onChange={handleChange}
+              className="p-2 rounded"
+            />
+            <input
+              name="lastName"
+              placeholder="Last name"
+              onChange={handleChange}
+              className="p-2 rounded"
+            />
+            <input
+              name="address"
+              placeholder="Address"
+              className="col-span-2 p-2 rounded"
+              onChange={handleChange}
+            />
+            <input
+              name="apt"
+              placeholder="APT, suit etc. (optional)"
+              className="col-span-2 p-2 rounded"
+              onChange={handleChange}
+            />
+            <input
+              name="city"
+              placeholder="City"
+              className="p-2 rounded"
+              onChange={handleChange}
+            />
+            <input
+              name="postalCode"
+              placeholder="Postal Code"
+              className="p-2 rounded"
+              onChange={handleChange}
+            />
           </div>
 
-          <h2 className="text-lg font-semibold mt-6 mb-4">Payment Information</h2>
+          <h2 className="text-lg font-semibold mt-6 mb-4">
+            Payment Information
+          </h2>
           <div className="grid grid-cols-2 gap-4">
-            <input name="paymentFirst" placeholder="First name" onChange={handleChange} className="p-2 rounded" />
-            <input name="paymentLast" placeholder="Last name" onChange={handleChange} className="p-2 rounded" />
-            <input name="universityId" placeholder="University ID" className="col-span-2 p-2 rounded" onChange={handleChange} />
+            <input
+              name="paymentFirst"
+              placeholder="First name"
+              onChange={handleChange}
+              className="p-2 rounded"
+            />
+            <input
+              name="paymentLast"
+              placeholder="Last name"
+              onChange={handleChange}
+              className="p-2 rounded"
+            />
+            <input
+              name="universityId"
+              placeholder="University ID"
+              className="col-span-2 p-2 rounded"
+              onChange={handleChange}
+            />
           </div>
 
           <div className="flex justify-between mt-6">
@@ -83,7 +130,9 @@ const CheckoutPage = () => {
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow-md border h-fit">
-          <h2 className="text-xl font-bold mb-4 text-[#1D2D1F]">Order Summary</h2>
+          <h2 className="text-xl font-bold mb-4 text-[#1D2D1F]">
+            Order Summary
+          </h2>
 
           <div className="flex justify-between mb-2">
             <p>Subtotal</p>
