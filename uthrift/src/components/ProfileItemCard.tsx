@@ -164,13 +164,13 @@ const ProfileItemCard: React.FC<ProfileItemCardProps> = ({
       <div className="absolute top-2 right-2 flex gap-2">
         <button
           onClick={() => setIsEditing(true)}
-          className="p-2 bg-[#7E9181] text-white rounded-full hover:bg-[#98A69B]"
+          className="cursor-pointer p-2 bg-[#7E9181] text-white rounded-full hover:bg-[#98A69B]"
         >
           <FaEdit />
         </button>
         <button
           onClick={() => onDelete(id)}
-          className="p-2 bg-red-500 text-white rounded-full hover:bg-red-600"
+          className="cursor-pointer p-2 bg-red-500 text-white rounded-full hover:bg-red-600"
         >
           <FaTrash />
         </button>

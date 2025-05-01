@@ -124,13 +124,13 @@ const ProfilePage = () => {
             <div className="flex flex-col space-y-4 pt-2">
               <button
                 onClick={() => setShowAddressForm(false)}
-                className="hover:text-white font-[Montserrat] px-10 py-3 text-left border-b-2 border-black w-full"
+                className="cursor-pointer hover:text-white font-[Montserrat] px-10 py-3 text-left border-b-2 border-black w-full"
               >
                 Current Listings
               </button>
               <button
                 onClick={() => setShowAddressForm(true)}
-                className="hover:text-white font-[Montserrat] px-10 py-3 text-left border-b-2 border-black w-full"
+                className="cursor-pointer hover:text-white font-[Montserrat] px-10 py-3 text-left border-b-2 border-black w-full"
               >
                 Add Address
               </button>
@@ -225,7 +225,7 @@ const ProfilePage = () => {
                 <div className="flex justify-end mt-8">
                   <button
                     onClick={handleAddressSubmit}
-                    className="bg-[#7E9181] text-white px-8 py-3 rounded-full hover:bg-[#98A69B] transition-colors"
+                    className="cursor-pointer bg-[#7E9181] text-white px-8 py-3 rounded-full hover:bg-[#667568] transition-colors"
                   >
                     Add Address
                   </button>
@@ -255,7 +255,7 @@ const ProfilePage = () => {
           {/* Add New Product Button */}
           <button
             onClick={() => setShowUploadForm(true)}
-            className="fixed bottom-8 right-8 bg-[#98A69B] text-black px-6 py-3 rounded-full shadow-lg hover:bg-[#7E9181] hover:text-white transition-colors"
+            className="cursor-pointer fixed bottom-8 right-8 bg-[#98A69B] text-black px-6 py-3 rounded-full shadow-lg hover:bg-[#7E9181] hover:text-white transition-colors"
           >
             Add a new item
           </button>

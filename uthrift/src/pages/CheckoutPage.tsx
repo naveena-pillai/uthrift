@@ -121,7 +121,7 @@ const CheckoutPage = () => {
           <div className="flex justify-between mt-6">
             <button
               type="button"
-              className="bg-[#7E9181] text-white px-6 py-2 rounded"
+              className="cursor-pointer bg-[#7E9181] text-white px-6 py-2 rounded hover:bg-[#6d7e70]"
               onClick={() => navigate("/cart")}
             >
               Cancel Order
@@ -157,7 +157,7 @@ const CheckoutPage = () => {
           <button
             type="button"
             onClick={() => navigate("/complete")}
-            className="w-full bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 rounded-full transition duration-200 flex items-center justify-center gap-2"
+            className="cursor-pointer w-full bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 rounded-full transition duration-200 flex items-center justify-center gap-2"
           >
             Place Order →
           </button>

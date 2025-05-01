@@ -92,7 +92,7 @@ const ItemCard: React.FC = () => {
           {userData?.role !== "seller" && (
             <button
               onClick={handleAddToCart}
-              className="font-inter text-lg px-4 py-2 rounded-xl text-white bg-[#7E9181] hover:bg-[#6b7e6e] transition-colors shadow"
+              className="cursor-pointer font-inter text-lg px-4 py-2 rounded-xl text-white bg-[#7E9181] hover:bg-[#6b7e6e] transition-colors shadow"
             >
               Add to Cart
             </button>

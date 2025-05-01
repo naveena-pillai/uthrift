@@ -80,7 +80,7 @@ export default function LoginPage() {
         >
         Forgot password?
       </Link>
-      <button onClick={handleLogin} className="bg-[#739181] text-[#042A2B] px-20 py-2 rounded-full shadow-md hover:shadow-lg transition">Log In</button>
+      <button onClick={handleLogin} className="bg-[#739181] text-[#042A2B] px-20 py-2 rounded-full shadow-md hover:shadow-lg transition cursor-pointer hover:bg-[#92a89d]">Log In</button>
       <div className="mt-8 text-center">
         <p className="text-[#2A3D66] mb-2">Don’t have an account? <span className="font-medium">Sign up!</span></p>
         <Link
@@ -91,7 +91,7 @@ export default function LoginPage() {
         </Link>
         </div>
         <button
-          onClick={handleGoogleLogin} className="flex items-center justify-center gap-3 bg-white text-black px-6 py-2 rounded-full shadow-md hover:shadow-lg transition mt-4">
+          onClick={handleGoogleLogin} className="cursor-pointer flex items-center justify-center gap-3 bg-white text-black px-6 py-2 rounded-full shadow-md hover:shadow-lg transition mt-4">
           <img src="/GoogleLogo.webp" alt="Google Logo" className="w-5 h-5"/>
           <span className="text-base font-medium">Sign in with Google</span>
         </button>   

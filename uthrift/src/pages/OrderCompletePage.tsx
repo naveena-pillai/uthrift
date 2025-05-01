@@ -43,7 +43,7 @@ const OrderCompletePage = () => {
             within 3–6 hours.
           </p>
           <button
-            className="bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 px-6 rounded-lg transition duration-200"
+            className="cursor-pointer hover:bg-[#6d7e70] bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 px-6 rounded-lg transition duration-200"
             onClick={handleContinueShopping}
           >
             Continue Shopping
