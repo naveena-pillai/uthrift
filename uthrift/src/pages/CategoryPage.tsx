@@ -48,6 +48,7 @@ export default function CategoryPage() {
         });
         // Filter by category (account for multiple categories)
         const filteredItems = itemsList.filter((item) => {
+          if (!categoryName) return;
           if (Array.isArray(item.category)) {
             return item.category.includes(categoryName);
           }
