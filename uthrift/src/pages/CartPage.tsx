@@ -61,7 +61,7 @@ const CartPage = () => {
         <div className="flex-1">
           <button
             type="submit"
-            className="w-20 bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 rounded-full transition duration-200 flex items-center justify-center gap-2"
+            className="cursor-pointer w-20 bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 rounded-full transition duration-200 flex items-center justify-center gap-2"
             onClick={() => navigate("/home")}
           >
             Back
@@ -95,7 +95,7 @@ const CartPage = () => {
                 </p>
                 <button
                   onClick={() => handleRemove(userData?.orders?.[index] || "")}
-                  className="text-[#1D2D1F] hover:text-red-500"
+                  className="cursor-pointer text-[#1D2D1F] hover:text-red-500"
                 >
                   X
                 </button>
@@ -135,7 +135,7 @@ const CartPage = () => {
 
           <button
             onClick={() => navigate("/checkout")}
-            className="w-full bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 rounded-full transition duration-200 flex items-center justify-center gap-2"
+            className="cursor-pointer w-full bg-[#7E9181] hover:bg-[#6d7e70] text-white font-semibold py-3 rounded-full transition duration-200 flex items-center justify-center gap-2"
           >
             Go to Checkout →
           </button>
