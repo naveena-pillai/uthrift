@@ -23,7 +23,7 @@ const Item: React.FC<ItemProps> = ({
   material,
   condition,
 }) => {
-  const { selectedItem, setSelectedItem } = useItemContext();
+  const { setSelectedItem } = useItemContext();
   const { currentUser, userData } = useAuth();
 
   const handleItemClick = () => {
