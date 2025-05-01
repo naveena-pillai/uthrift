@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import ItemCard from "./ItemCard";
 
 interface ProfileItemCardProps {
   id: string;
@@ -36,6 +35,8 @@ const ProfileItemCard: React.FC<ProfileItemCardProps> = ({
     imageUrl: thumbnail,
   });
   const [error, setError] = useState("");
+  const [, setPreviewUrl] = useState<string | null>(null);
+  const [, setNewImage] = useState<File | null>(null);
 
   const validateFields = () => {
     if (!editedData.name.trim()) return "Name is required";

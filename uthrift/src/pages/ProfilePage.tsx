@@ -1,5 +1,5 @@
 // Shows seller's info and their listings
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { db } from "../firebase/firebase";
 import {
   collection,
