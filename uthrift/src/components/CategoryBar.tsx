@@ -40,7 +40,7 @@ const CategoryBar: React.FC = () => {
       {categories.map((category) => (
         <div key={category.name} className="relative">
           <button
-            className="cursor-pointer font-inter text-lg font-semibold"
+            className="text-lg font-semibold font-inter hover:underline hover:cursor-pointer"
             onClick={() => toggleCategory(category.name)}
           >
             {category.name}

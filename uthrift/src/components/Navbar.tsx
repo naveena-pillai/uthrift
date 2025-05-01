@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import shoppingCart from "../assets/shopping_cart.png";
-import profileIcon from "../assets/profile_icon.png";
-import logo from "../assets/dormpop_logo.png";
-import { useAuth } from "../context/AuthContext";
-import { fetchUserData } from "../firebase/firebaseFetch";
 import { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import { useAuth } from "../context/AuthContext";
+import { fetchUserData } from "../firebase/firebaseFetch";
 import { UserData } from "../types/UserData";
+
+import logo from "../assets/dormpop_logo.png";
+import profileIcon from "../assets/profile_icon.png";
+import shoppingCart from "../assets/shopping_cart.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,48 +26,52 @@ const Navbar = () => {
     getUserData();
   }, [currentUser]);
 
-  const handleProfileClick = () => {
-    setShowDropdown((prev) => !prev);
-  };
-
-  // Logout logic
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/login");
   };
 
+  const handleProfileClick = () => {
+    setShowDropdown((prev) => !prev);
+  };
+
   return (
-    <nav className="flex justify-between items-center px-8 py-2 bg-[#7E2C1E] shadow-md">
+    <nav className="flex items-center justify-between px-8 py-2 bg-[#7E2C1E] shadow-md">
+      {/* Left Logo (Clickable) */}
       <div
-        className="flex items-center cursor-pointer"
+        className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
         onClick={() => navigate("/home")}
       >
-        <img src={logo} alt="Logo" className="h-8 w-auto" />
+        <img src={logo} alt="Dormpop Logo" className="h-8 w-auto" />
       </div>
 
+      {/* Center Brand Text (Clickable) */}
       <div
-        className="flex justify-center cursor-pointer"
+        className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
         onClick={() => navigate("/home")}
       >
-        <img src="/DormPop.png" alt="DormPop Logo" className="h-10 w-auto" />
+        <img src="/DormPop.png" alt="DormPop Text" className="h-10 w-auto" />
       </div>
 
-      <div className="flex items-center space-x-6 justify-end relative">
+      {/* Right Icons */}
+      <div className="flex items-center space-x-6 relative">
+        {/* Cart icon (for buyers only) */}
         {userData?.role !== "seller" && (
           <img
             src={shoppingCart}
-            alt="Shopping Cart"
-            className="w-8 h-8 cursor-pointer"
+            alt="Cart"
             onClick={() => navigate("/cart")}
+            className="w-8 h-8 cursor-pointer hover:scale-105 transition-transform"
           />
         )}
 
+        {/* Profile icon + dropdown */}
         <div className="relative">
           <img
             src={profileIcon}
             alt="Profile"
-            className="w-8 h-8 cursor-pointer rounded-full"
             onClick={handleProfileClick}
+            className="w-8 h-8 rounded-full cursor-pointer hover:scale-105 transition-transform"
           />
           {showDropdown && (
             <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
