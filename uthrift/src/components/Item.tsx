@@ -45,6 +45,8 @@ const Item: React.FC<ItemProps> = ({
       return;
     }
 
+    if (!selectedItem) return;
+
     try {
       await addItemToCart(currentUser.uid, selectedItem.id);
       alert("Item added to cart!");

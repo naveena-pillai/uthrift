@@ -21,7 +21,7 @@ const CheckoutPage = () => {
     paymentLast: "",
   });
 
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [, setUserData] = useState<UserData | null>(null);
   const [cartItems, setCartItems] = useState<Item[]>([]);
 
   useEffect(() => {
