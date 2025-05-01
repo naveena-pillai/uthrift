@@ -45,10 +45,8 @@ const Item: React.FC<ItemProps> = ({
       return;
     }
 
-    if (!selectedItem) return;
-
     try {
-      await addItemToCart(currentUser.uid, selectedItem.id);
+      await addItemToCart(currentUser.uid, id);
       alert("Item added to cart!");
     } catch (error) {
       console.error("Error adding item to cart:", error);
@@ -76,7 +74,10 @@ const Item: React.FC<ItemProps> = ({
         </h2>
         {userData?.role !== "seller" && (
           <button
-            onClick={handleAddToCart}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleAddToCart();
+          }}
             className="cursor-pointer font-inter text-lg px-4 py-2 rounded-xl text-white bg-[#7E9181] hover:bg-[#6b7e6e] transition-colors shadow"
           >
             Add to Cart
